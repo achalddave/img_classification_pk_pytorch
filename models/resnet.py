@@ -27,7 +27,6 @@ class BasicBlockWithDeathRate(nn.Module):
         residual = x
         if self.downsample is not None:
             x = self.downsample(x)
-        # TODO: fix the bug of original Stochatic depth
         if not self.training or torch.rand(1)[0] >= self.death_rate:
             residual = self.conv1(residual)
             residual = self.bn1(residual)
